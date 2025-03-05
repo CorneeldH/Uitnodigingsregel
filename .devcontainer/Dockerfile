@@ -15,8 +15,7 @@ ENV PATH="/root/.local/bin:${PATH}"
 # Set working directory
 WORKDIR /app
 
-# Clone the repository (this will be mounted in devcontainer, but included for standalone usage)
-RUN git clone https://github.com/cedanl/Uitnodigingsregel.git /app
+# Code will be mounted by devcontainer
 
 # Set up a Python environment with uv
 RUN uv venv /app/.venv
@@ -27,6 +26,3 @@ RUN uv pip install jupyter
 
 # Expose Jupyter port
 EXPOSE 8888
-
-# Set the default command
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
